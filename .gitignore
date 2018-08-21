@@ -125,7 +125,7 @@ __pycache__/
 .Python
 build/
 develop-eggs/
-dist/
+
 downloads/
 eggs/
 .eggs/
@@ -168,7 +168,7 @@ coverage.xml
 # Django stuff:
 *.log
 .static_storage/
-.media/
+
 local_settings.py
 
 # Flask stuff:
@@ -236,7 +236,6 @@ venv.bak/
 nbproject/private/
 build/
 nbbuild/
-dist/
 nbdist/
 .nb-gradle/
 ### JetBrains template
