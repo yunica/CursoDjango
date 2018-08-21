@@ -43,7 +43,7 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'usuario'
+
 )
 
 THIRD_PARTY_APPS = (
@@ -51,7 +51,7 @@ THIRD_PARTY_APPS = (
 )
 
 LOCAL_APPS = (
-    # 'publico.apps.PublicConfig',
+    'usuario',
 )
 
 INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
@@ -136,3 +136,8 @@ STATICFILES_DIRS = [
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+
+#Configuracion para el manejo de usuario
+
+AUTH_USER_MODEL = 'usuario.User'
