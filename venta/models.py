@@ -30,10 +30,37 @@ class Producto(models.Model):
     descripcion = models.TextField(blank=True, null=True)
     imagen = models.ImageField(blank=True, null=True,upload_to='productos/')
     subcategoria = models.ForeignKey(SubCategoria, on_delete=models.PROTECT)
-    cantidad = models.PositiveIntegerField()
+    cantidad = models.PositiveIntegerField(default=0)
     precio = models.DecimalField(max_digits=19, decimal_places=4)
     precio_oferta = models.DecimalField(max_digits=19, decimal_places=4, blank=True)
     registro = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.PROTECT)   
+    fecha_registro = models.DateTimeField(auto_now_add=True)
+    fecha_actualizacion = models.DateTimeField(auto_now=True)
+    estado = models.BooleanField(default=True)
+
+class Proveedor(models.Model):
+    nombre = models.CharField(max_length=30)
+    descripcion = models.TextField(blank=True, null=True)
+    imagen = models.ImageField(blank=True, null=True,upload_to='proveedores/')
+    fecha_registro = models.DateTimeField(auto_now_add=True)
+    fecha_actualizacion = models.DateTimeField(auto_now=True)
+    estado = models.BooleanField(default=True)
+
+
+class Compra(models.Model):
+    nombre = models.CharField(max_length=30)
+    descripcion = models.TextField(blank=True, null=True)
+    precio_total = models.DecimalField(max_digits=19, decimal_places=4,blank=True, null=True)
+    cantidad = models.PositiveIntegerField(blank=True, null=True, default=0)
+    proveedor = models.ForeignKey(Proveedor,on_delete=models.PROTECT)
+    fecha_registro = models.DateTimeField(auto_now_add=True)
+    fecha_actualizacion = models.DateTimeField(auto_now=True)
+    estado = models.BooleanField(default=True)
+
+class CompraDetalle(models.Model):
+    precio_total = models.DecimalField(max_digits=19, decimal_places=4,blank=True, null=True)
+    cantidad = models.PositiveIntegerField(blank=True, null=True, default=0)
+    producto = models.ForeignKey(Producto,on_delete=models.PROTECT)
     fecha_registro = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
     estado = models.BooleanField(default=True)

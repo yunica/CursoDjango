@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+{% block titulo %} AGREGAR PROVEEDOR {% endblock %}
+{% block contenido %}
+ 
+<section class="content-header">
+  <h1>
+    Agregar Proveedor
+    <small>listar</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Venta</a></li>
+    <li><a href="#">Lista Productos</a></li>
+    <li class="active">Lista</li>
+  </ol>
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Agregar Proveedor</h3>
+        </div>
+        <form role="form" method="POST">
+            {% csrf_token %}
+                <div class="box-body">
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    {{ form.comentario }} 
+                </div>
+                
+                </div>
+                <!-- /.box-body -->
+  
+                <div class="box-footer">
+                  <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
+  </form>
+
+  
+
+
+      </div>
+   
+
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
+

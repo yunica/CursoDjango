@@ -29,17 +29,17 @@
        {% if lista %}
        <table class="table table-bordered">
         <tr>
-          <th style="width: 10px">#</th>
-          <th>id</th>
+          <th style="width: 10px">id</th>
           <th>nombre</th>
+          <th>descripcion</th>
   
         </tr>
        {% for i in lista %}
        <tr>
         <td>{{i.id}}</td>
         <td>{{i.nombre}}</td>
-
-        <td><span class="badge bg-red">55%</span></td>
+        <td>{{i.descripcion}}</td>
+        <td><a href=" {% url 'app1:detalle' pk=i.id %}"> <span class="badge bg-red">ver</span></a></td>
       </tr>
         <br>
        
