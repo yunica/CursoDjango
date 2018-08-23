@@ -28,7 +28,7 @@ class Producto(models.Model):
     id = models.BigAutoField(primary_key=True)
     nombre = models.CharField(max_length=30)
     descripcion = models.TextField(blank=True, null=True)
-    imagen = models.ImageField(blank=True, null=True)
+    imagen = models.ImageField(blank=True, null=True,upload_to='productos/')
     subcategoria = models.ForeignKey(SubCategoria, on_delete=models.PROTECT)
     cantidad = models.PositiveIntegerField()
     precio = models.DecimalField(max_digits=19, decimal_places=4)

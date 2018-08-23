@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% block titulo %} LISTA DE PRODUCTOS {% endblock %}
+{% block contenido %}
+ 
+<section class="content-header">
+  <h1>
+    Lista de todos los productos
+    <small>listar</small>
+  </h1>
+  <ol class="breadcrumb">
+    <li><a href="#"><i class="fa fa-dashboard"></i> Venta</a></li>
+    <li><a href="#">Lista Productos</a></li>
+    <li class="active">Lista</li>
+  </ol>
+</section>
+
+
+<!-- Main content -->
+<section class="content">
+  <div class="row">
+    <!-- left column -->
+    <div class="col-md-12">
+      <!-- general form elements -->
+      <div class="box box-primary">
+        <div class="box-header with-border">
+          <h3 class="box-title">Lista de productos</h3>
+        </div>
+        <!-- /.box-header -->
+       {% if lista %}
+       <table class="table table-bordered">
+        <tr>
+          <th style="width: 10px">#</th>
+          <th>id</th>
+          <th>nombre</th>
+  
+        </tr>
+       {% for i in lista %}
+       <tr>
+        <td>{{i.id}}</td>
+        <td>{{i.nombre}}</td>
+
+        <td><span class="badge bg-red">55%</span></td>
+      </tr>
+        <br>
+       
+       {% endfor %}
+        
+      </table>
+       {% endif %}
+       
+
+      
+
+
+      </div>
+   
+
+    </div>
+
+  </div>
+</section>
+
+{% endblock %}
+
