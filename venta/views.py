@@ -1,15 +1,17 @@
 from django.shortcuts import render, HttpResponseRedirect
 from .models import Producto
 from .formularios import segundoformulario
+from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-
+@login_required(login_url='/login')
 def listaproductos(request):
     oproducto = Producto.objects.filter(estado=True)
     contenido = {
         "lista": oproducto,
         "valor": 654654654654
     }
+    print(request.user)
     return render(request, 'venta/listaproductos.html', contenido)
 
 
