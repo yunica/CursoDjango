@@ -14,9 +14,9 @@
         </div>
       </div>
       <!-- search form -->
-      <form action="#" method="get" class="sidebar-form">
+      <form action="{% url 'app1:lista' %}" method="get" class="sidebar-form">
         <div class="input-group">
-          <input type="text" name="q" class="form-control" placeholder="Search...">
+          <input type="text" name="nombreproductos" class="form-control" placeholder="Buscar Productos...">
           <span class="input-group-btn">
                 <button type="submit" name="search" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
                 </button>
@@ -36,8 +36,10 @@
           </a>
           <ul class="treeview-menu">
             
-            <li class="active"><a href="{%  url 'app1:lista'  %}"><i class="fa fa-circle-o"></i> Lista</a></li>
-            
+            <li ><a href="{%  url 'app1:lista'  %}"><i class="fa fa-circle-o"></i> Lista Productos</a></li>
+            <li ><a href="{%  url 'app1:agregarp'  %}"><i class="fa fa-circle-o"></i> Agregar proveedor</a></li>
+            <li ><a href="{%  url 'app1:agregarp2'  %}"><i class="fa fa-circle-o"></i> Agregar proveedor</a></li>
+          
           </ul>
         </li>
 

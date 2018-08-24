@@ -11,7 +11,13 @@ def listaproductos(request):
         "lista": oproducto,
         "valor": 654654654654
     }
-    print(request.user)
+    if request.method == 'GET':
+        oproducto = Producto.objects.filter(nombre__contains=request.GET.get('nombreproductos'))
+        contenido={
+            "lista":oproducto
+            }
+        return render(request, 'venta/listaproductos.html', contenido)
+
     return render(request, 'venta/listaproductos.html', contenido)
 
 
@@ -48,3 +54,11 @@ def agregarproveedor2(request):
         oproveedor.save()
 
     return render(request, 'venta/agregarproveedor2.html')
+
+def buscarproducto(request):
+    if request.method == 'GET':
+        oproducto = Producto.objects.filter(nombre__contains=request.GET.get('nombreproductos'))
+        contenido={
+            "lista":oproducto
+            }
+        return render(request, 'venta/listaproductos.html', contenido)
