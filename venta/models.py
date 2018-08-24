@@ -52,6 +52,10 @@ class Proveedor(models.Model):
         return self.nombre
 
 
+
+
+
+
 class Compra(models.Model):
     nombre = models.CharField(max_length=30)
     descripcion = models.TextField(blank=True, null=True)

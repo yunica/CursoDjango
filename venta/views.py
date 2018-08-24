@@ -1,10 +1,10 @@
 from django.shortcuts import render, HttpResponseRedirect
-from .models import Producto
+from .models import Producto, Proveedor
 from .formularios import segundoformulario
 from django.contrib.auth.decorators import login_required
 # Create your views here.
 
-@login_required(login_url='/login')
+#@login_required(login_url='/login')
 def listaproductos(request):
     oproducto = Producto.objects.filter(estado=True)
     contenido = {
@@ -34,3 +34,17 @@ def agregarproveedor(request):
             formulario.save()
             #return HttpResponseRedirect('/venta/listaproductos')
     return render(request, 'venta/crearproveedor.html', contenido)
+
+
+def agregarproveedor2(request):
+    if request.method == 'POST':
+        oproveedor = Proveedor(
+            nombre = str(request.POST.get('nombre')).upper(),
+            descripcion =str(request.POST.get('descripcion')),
+            estado = False
+        )
+
+        
+        oproveedor.save()
+
+    return render(request, 'venta/agregarproveedor2.html')
