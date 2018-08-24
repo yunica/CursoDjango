@@ -29,10 +29,18 @@
             {% csrf_token %}
                 <div class="box-body">
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
-                    {{ form.comentario }} 
+                    <label for="exampleInputEmail1">Nombre</label>
+                    {{ form.nombre }} 
                 </div>
-                
+                <div class="form-group">
+                        <label for="exampleInputEmail1">Nombre</label>
+                        {{ form.descripcion }} 
+                    </div>
+                    <div class="form-group">
+                            <label for="exampleInputEmail1">Nombre</label>
+                            {{ form.imagen }} 
+                        </div>
+                                
                 </div>
                 <!-- /.box-body -->
   

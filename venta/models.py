@@ -23,6 +23,8 @@ class SubCategoria(models.Model):
     fecha_registro = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
     estado = models.BooleanField(default=True)
+    def __str__(self):
+        return self.nombre
 
 class Producto(models.Model):
     id = models.BigAutoField(primary_key=True)
@@ -45,6 +47,9 @@ class Proveedor(models.Model):
     fecha_registro = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
     estado = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.nombre
 
 
 class Compra(models.Model):
