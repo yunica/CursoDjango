@@ -43,11 +43,12 @@ DJANGO_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-
 )
 
 THIRD_PARTY_APPS = (
-    # 'rest_framework',
+    'rest_framework',
+    'ckeditor',
+    'tinymce',
 )
 
 LOCAL_APPS = (
