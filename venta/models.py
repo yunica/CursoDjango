@@ -1,5 +1,9 @@
 from django.db import models
 from django.conf import settings
+from django.db.models.signals import post_save
+from django.dispatch import receiver
+from django.db import transaction
+
 
 # Create your models here.
 class Categoria(models.Model):
@@ -73,3 +77,15 @@ class CompraDetalle(models.Model):
     fecha_registro = models.DateTimeField(auto_now_add=True)
     fecha_actualizacion = models.DateTimeField(auto_now=True)
     estado = models.BooleanField(default=True)
+
+    def actualizarstock(self):
+        if self.producto:
+            oproducto = self.producto
+            oproducto.cantidad = oproducto.cantidad + self.cantidad
+            oproducto.save()
+
+@transaction.atomic
+@receiver(post_save, sender=CompraDetalle)
+def agregarstock(sender, instance, created, **kwargs):
+    if created:
+        instance.actualizarstock()
