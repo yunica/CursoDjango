@@ -2,6 +2,10 @@ from django.shortcuts import render, HttpResponseRedirect
 from .models import Producto, Proveedor
 from .formularios import segundoformulario
 from django.contrib.auth.decorators import login_required
+from django.views.generic import ListView, CreateView
+
+
+
 # Create your views here.
 
 #@login_required(login_url='/login')
@@ -62,3 +66,18 @@ def buscarproducto(request):
             "lista":oproducto
             }
         return render(request, 'venta/listaproductos.html', contenido)
+
+
+class ListarProveedor(ListView):
+    model = Proveedor
+    template_name ='venta/listarproasview.html'
+    context_object_name = 'lista_proveedores'
+    queryset = Proveedor.objects.filter(estado = True)
+
+
+class ProveedorCreate(CreateView):
+    model = Proveedor
+    template_name = 'venta/crearprovee.html'
+    success_url = '/venta/listarp'
+    fields = '__all__'
+    
