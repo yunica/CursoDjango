@@ -15,12 +15,6 @@ def listaproductos(request):
         "lista": oproducto,
         "valor": 654654654654
     }
-    if request.method == 'GET':
-        oproducto = Producto.objects.filter(nombre__contains=request.GET.get('nombreproductos'))
-        contenido={
-            "lista":oproducto
-            }
-        return render(request, 'venta/listaproductos.html', contenido)
 
     return render(request, 'venta/listaproductos.html', contenido)
 
