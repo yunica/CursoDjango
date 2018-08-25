@@ -1,4 +1,12 @@
-{% extends 'base.html' %} {% block titulo %} LISTA DE PRODUCTOS {% endblock %} {% block contenido %}
+
+{% extends 'base.html' %}
+{% load static from staticfiles %}
+
+ {% block titulo %} LISTA DE PRODUCTOS {% endblock %} 
+ {% block cssimport %} 
+ <link rel="stylesheet" href="{% static 'bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
+ {% endblock %}
+ {% block contenido %}
 
 <section class="content-header">
   <h1>
@@ -24,28 +32,28 @@
           <h3 class="box-title">Lista de productos</h3>
         </div>
 
-        <select class="form-control select2 " multiple>
-          {% for i in lista %}
-          <option value="{{ i.id }}">{{i.nombre}}</option>
-          {% endfor %}
-        </select>
         <!-- /.box-header -->
         {% if lista %}
-        <table class="table table-bordered">
-          <tr>
-            <th style="width: 10px">id</th>
-            <th>nombre</th>
-            <th>descripcion</th>
-
-          </tr>
-          {% for i in lista %}
-          <tr>
-            <td>{{i.id}}</td>
-            <td>{{i.nombre}}</td>
-            <td>{{i.descripcion}}</td>
-            <td><a href=" {% url 'app1:detalle' pk=i.id %}"> <span class="badge bg-red">ver</span></a></td>
-          </tr>
-          {% endfor %}
+        <table id="example2" class="table table-bordered table-hover">            <thead>
+                <tr>
+                    <th style="width: 10px">id</th>
+                    <th>nombre</th>
+                    <th>descripcion</th>
+        
+                  </tr>
+                  </thead>
+          
+    <tbody>
+        {% for i in lista %}
+        <tr>
+          <td>{{i.id}}</td>
+          <td>{{i.nombre}}</td>
+          <td>{{i.descripcion}}</td>
+          <td><a href=" {% url 'app1:detalle' pk=i.id %}"> <span class="badge bg-red">ver</span></a></td>
+        </tr>
+        {% endfor %}
+    </tbody>
+        
 
         </table>
         {% endif %}
@@ -62,4 +70,26 @@
   </div>
 </section>
 
+{% endblock %}
+
+{% block jsimport %} 
+<script src="{% static 'bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+
+
+{% endblock %}
+
+{% block jsinit  %}
+<script>
+    $(function () {
+      $('#example1').DataTable()
+      $('#example2').DataTable({
+        'paging'      : true,
+        'lengthChange': false,
+        'searching'   : false,
+        'ordering'    : true,
+        'info'        : true,
+        'autoWidth'   : false
+      })
+    })
+  </script>
 {% endblock %}
