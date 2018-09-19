@@ -148,3 +148,25 @@ class MyPDF(PDFTemplateView2):
     cmd_options = {
         'margin-top': 3,
     }
+
+
+# report lab
+import io
+from reportlab.pdfgen import canvas
+from django.http import HttpResponse
+
+
+def some_view(request, pk=None):
+    response = HttpResponse(content_type='application/pdf')
+    response['Content-Disposition'] = 'attachment; filename="file-' + str(pk) + '.pdf"'
+    p = canvas.Canvas(response)
+    p.setFont("Times-Roman", 55)
+    # header
+    p.drawString(100, 700, "Hello, Javatpoint.")
+    # body
+
+
+    # footer
+    p.showPage()
+    p.save()
+    return response
