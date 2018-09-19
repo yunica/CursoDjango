@@ -52,7 +52,7 @@
                                     <td>{{ i.descripcion }}</td>
                                     <td><a href=" {% url 'app1:detalle' pk=i.id %}"> <span
                                             class="badge bg-red">ver</span></a>
-                                        <a href=" {% url 'app1:imprimir' %}"> <span
+                                        <a href=" {% url 'app1:imprimir' pk=i.id %}"> <span
                                                 class="badge bg-red">imprimir</span></a>
                                     </td>
                                 </tr>

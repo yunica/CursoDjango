@@ -119,3 +119,22 @@ class ProveedorCreate(CreateView):
     template_name = 'venta/crearprovee.html'
     success_url = '/venta/listarp'
     fields = '__all__'
+
+
+# imprimir v2   https://github.com/nigma/django-easy-pdf
+
+from easy_pdf.views import PDFTemplateView
+from django.utils.timezone import now
+
+
+class DemoPDFView(PDFTemplateView):
+    template_name = 'print/easy_pdf.html'
+    pdf_filename = 'hello.pdf'
+
+    def get_context_data(self, **kwargs):
+        return super(DemoPDFView, self).get_context_data(
+            pagesize='A4',
+            title='Hi there!',
+            today=now(),
+            **kwargs
+        )
