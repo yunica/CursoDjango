@@ -1,94 +1,96 @@
-
 {% extends 'base.html' %}
 {% load static from staticfiles %}
 
- {% block titulo %} LISTA DE PRODUCTOS {% endblock %} 
- {% block cssimport %} 
- <link rel="stylesheet" href="{% static 'bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
- {% endblock %}
- {% block contenido %}
+{% block titulo %} LISTA DE PRODUCTOS {% endblock %}
+{% block cssimport %}
+    <link rel="stylesheet" href="{% static 'bower_components/datatables.net-bs/css/dataTables.bootstrap.min.css' %}">
+{% endblock %}
+{% block contenido %}
 
-<section class="content-header">
-  <h1>
-    Lista de todos los productos
-    <small>listar</small>
-  </h1>
-  <ol class="breadcrumb">
-    <li><a href="#"><i class="fa fa-dashboard"></i> Venta</a></li>
-    <li><a href="#">Lista Productos</a></li>
-    <li class="active">Lista</li>
-  </ol>
-</section>
+    <section class="content-header">
+        <h1>
+            Lista de todos los productos
+            <small>listar</small>
+        </h1>
+        <ol class="breadcrumb">
+            <li><a href="#"><i class="fa fa-dashboard"></i> Venta</a></li>
+            <li><a href="#">Lista Productos</a></li>
+            <li class="active">Lista</li>
+        </ol>
+    </section>
 
 
-<!-- Main content -->
-<section class="content">
-  <div class="row">
-    <!-- left column -->
-    <div class="col-md-12">
-      <!-- general form elements -->
-      <div class="box box-primary">
-        <div class="box-header with-border">
-          <h3 class="box-title">Lista de productos</h3>
+    <!-- Main content -->
+    <section class="content">
+        <div class="row">
+            <!-- left column -->
+            <div class="col-md-12">
+                <!-- general form elements -->
+                <div class="box box-primary">
+                    <div class="box-header with-border">
+                        <h3 class="box-title">Lista de productos</h3>
+                    </div>
+
+                    <!-- /.box-header -->
+                    {% if lista %}
+                        <table id="example2" class="table table-bordered table-hover">
+                            <thead>
+                            <tr>
+                                <th style="width: 10px">id</th>
+                                <th>nombre</th>
+                                <th>descripcion</th>
+                                <th>imprimir</th>
+
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            {% for i in lista %}
+                                <tr>
+                                    <td>{{ i.id }}</td>
+                                    <td>{{ i.nombre }}</td>
+                                    <td>{{ i.descripcion }}</td>
+                                    <td><a href=" {% url 'app1:detalle' pk=i.id %}"> <span
+                                            class="badge bg-red">ver</span></a>
+                                        <a href=" {% url 'app1:imprimir' %}"> <span
+                                                class="badge bg-red">imprimir</span></a>
+                                    </td>
+                                </tr>
+                            {% endfor %}
+                            </tbody>
+
+
+                        </table>
+                    {% endif %}
+
+
+                </div>
+
+
+            </div>
+
         </div>
-
-        <!-- /.box-header -->
-        {% if lista %}
-        <table id="example2" class="table table-bordered table-hover">            <thead>
-                <tr>
-                    <th style="width: 10px">id</th>
-                    <th>nombre</th>
-                    <th>descripcion</th>
-        
-                  </tr>
-                  </thead>
-          
-    <tbody>
-        {% for i in lista %}
-        <tr>
-          <td>{{i.id}}</td>
-          <td>{{i.nombre}}</td>
-          <td>{{i.descripcion}}</td>
-          <td><a href=" {% url 'app1:detalle' pk=i.id %}"> <span class="badge bg-red">ver</span></a></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-        
-
-        </table>
-        {% endif %}
-
-
-
-
-
-      </div>
-
-
-    </div>
-
-  </div>
-</section>
+    </section>
 
 {% endblock %}
-{% block jsimport %} 
-<script src="{% static 'bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
+{% block jsimport %}
+    <script src="{% static 'bower_components/datatables.net/js/jquery.dataTables.min.js' %}"></script>
 
 
 {% endblock %}
 
-{% block jsinit  %}
-<script>
-    $(function () {
-      $('#example1').DataTable()
-      $('#example2').DataTable({
-        'paging'      : true,
-        'lengthChange': false,
-        'searching'   : false,
-        'ordering'    : true,
-        'info'        : true,
-        'autoWidth'   : false
-      })
-    })
-  </script>
+{% block jsinit %}
+    <script>
+        $(function () {
+            $('#example1').DataTable()
+            $('#example2').DataTable({
+                'paging': true,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            })
+        })
+    </script>
 {% endblock %}

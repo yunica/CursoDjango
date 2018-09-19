@@ -1,6 +1,6 @@
 
 from django.urls import path, include
-from .views import listaproductos, detalleproductos, agregarproveedor, agregarproveedor2, buscarproducto, ListarProveedor,ProveedorCreate
+from .views import listaproductos, detalleproductos, render_pdf_view,agregarproveedor, agregarproveedor2, buscarproducto, ListarProveedor,ProveedorCreate
 from venta.apis import urls as apiurls
 
 app_name = "app1"
@@ -12,7 +12,8 @@ urlpatterns = [
     path('buscarproduto', buscarproducto, name="buscarp"),
     path('listarp', ListarProveedor.as_view(), name="listarp"),
     path('new', ProveedorCreate.as_view(), name="listarp"),
-    
+    path('imprimir', render_pdf_view, name="imprimir"),
+
     path('api/', include(apiurls.router.urls)),
 
 

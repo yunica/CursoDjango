@@ -1,0 +1,202 @@
+{% load static from staticfiles %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <style type="text/css">
+    /*
+    Styling for Reports
+    For more info on supported styling and custom tags see:;
+    https://github.com/chrisglass/xhtml2pdf/blob/master/doc/pisa-en.html
+    */
+    html {
+      max-width: 1000px;
+    }
+    h1, h2, h3, h4 {
+      color: #f00;
+      line-height: 1em;
+      font-size: 150%;
+    }
+    h1 {
+      font-size: 200%;
+    }
+    #header, p {
+      font-size: 1.2em;
+    }
+    /*** FOOTER ***/
+    #footer table {
+    width:100%;
+    }
+    #footer td {
+      width:50%;
+    }
+    #footer .generated {
+      text-align: right
+    }
+    /*** PAGE SIZE AND MARGINS ***/
+    @page {
+      size: a4;
+      margin: 1cm;
+      margin-bottom: 2cm;
+      @frame footer {
+        -pdf-frame-content: footer;
+        bottom: 0.5cm;
+        margin-left: 1cm;
+        margin-right: 1cm;
+        height: 1cm;
+      }
+    }
+    /*** Tables ***/
+    table.gridtable , .gridtable td, .gridtable th{
+      border: 1px solid #666;
+      border-collapse: collapse;
+      padding: 4px;
+    }
+    .gridtable th {
+      background-color: #dedede;
+    }
+    table.infotable, .infotable td, .infotable th {
+      border: 1px solid #666;
+      border-collapse: collapse;
+      padding: 2px 2px 0 2px;
+      line-height: 1.2em;
+      vertical-align: top;
+      text-align: left;
+    }
+    table.infotable {
+      width: 100%;
+    }
+    .infotable th {
+      background-color: #eee;
+    }
+    /*** HEADER ***/
+    #header {
+      border: 1px solid #000;
+      border-collapse: collapse;
+      margin-bottom: 2em;
+      width:100%;
+      vertical-align: middle;
+      line-height: 1em;
+    }
+    .attribute {
+      font-weight: bold;
+    }
+    #header .logo, #header .logo img {
+      width:100px;
+    }
+    #header table , #header td {
+      border: 1px solid #000;
+      padding: 0.3em;
+      margin-bottom: 0;
+    }
+    figure {
+    margin: 0;
+    }
+    figure figcaption {
+      margin: -10px 0 25px 10px;
+      display: block;
+    }
+    </style>
+</head>
+
+<body>
+<!-- Content for Static Frame 'header_frame' -->
+<div id="header_content">
+    header
+</div>
+
+<!-- Content for Static Frame 'footer_frame' -->
+<div id="footer_content">
+    <h1>(c) - page
+        <pdf:pagenumber> de <pdf:pagecount>
+    </h1>
+</div>
+
+<!-- HTML Content -->
+
+<table id="header">
+    <tr>
+        <td colspan="2">
+            <span class="attribute">Project:</span> X
+        </td>
+        <td rowspan="3" class="logo">
+    <img src="avatar5.png" class="img-circle" alt="User Image">
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2">
+            <span class="attribute">Foo:</span> bar
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <span class="attribute">Foo:</span> bar
+        </td>
+        <td>
+            <span class="attribute">Foo:</span> Bar
+        </td>
+    </tr>
+</table>
+
+<table class="infotable">
+    <tr>
+        <th>
+            Foo
+        </th>
+        <th>
+            Bar
+        </th>
+    </tr>
+    <tr>
+        <td>
+            baz
+        </td>
+        <td>
+            baz
+        </td>
+    </tr>
+</table>
+<h1>
+    Title
+</h1>
+<p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Quisque fringilla laoreet iaculis. Praesent varius pharetra
+    vulputate. Phasellus semper tellus ut dolor facilisis nec imperdiet lectus consectetur. Morbi condimentum commodo
+    turpis, a lacinia dui vestibulum vitae. In hac habitasse platea dictumst.
+</p>
+
+<figure>
+    <table class="gridtable">
+        <thead>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Value
+            </th>
+        </tr>
+        </thead>
+        <tr>
+            <td>
+                Item 1
+            </td>
+            <td>
+                Value 1
+            </td>
+        </tr>
+        {% for i in datos %}
+        <tr>
+            <td>
+               {{ i }}
+            </td>
+            <td>
+                Value 2
+            </td>
+        </tr>
+        {% endfor %}
+    </table>
+
+</figure>
+</body>
+</html>
