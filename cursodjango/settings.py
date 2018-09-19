@@ -50,6 +50,7 @@ THIRD_PARTY_APPS = (
     'ckeditor',
     'tinymce',
     'easy_pdf',
+    'wkhtmltopdf',
 )
 
 LOCAL_APPS = (
@@ -147,6 +148,7 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [os.path.join(BASE_DIR, "/static/"),
                     '/home/junior/PycharmProjects/CursoDjango/static/']
+STATIC_ROOT = '/home/junior/PycharmProjects/CursoDjango/static/dist'
 # STATIC_ROOT = os.path.join(BASE_DIR, "/static/")
 # STATIC_ROOT = '/home/junior/PycharmProjects/CursoDjango/static'
 
