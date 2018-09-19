@@ -125,6 +125,7 @@ class ProveedorCreate(CreateView):
 
 from easy_pdf.views import PDFTemplateView
 from django.utils.timezone import now
+from wkhtmltopdf.views import PDFTemplateView as PDFTemplateView2
 
 
 class DemoPDFView(PDFTemplateView):
@@ -136,5 +137,14 @@ class DemoPDFView(PDFTemplateView):
             pagesize='A4',
             title='Hi there!',
             today=now(),
+            datos=range(0, 100),
             **kwargs
         )
+
+
+class MyPDF(PDFTemplateView2):
+    filename = 'my_pdf.pdf'
+    template_name = 'print/wkhtmltopdf.html'
+    cmd_options = {
+        'margin-top': 3,
+    }

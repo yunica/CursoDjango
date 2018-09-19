@@ -158,3 +158,4 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 # Configuracion para el manejo de usuario
 
 AUTH_USER_MODEL = 'usuario.User'
+WKHTMLTOPDF_CMD = '/home/junior/PycharmProjects/CursoDjango/wkhtmltopdf/'
